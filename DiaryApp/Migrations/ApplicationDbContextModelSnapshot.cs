@@ -3,12 +3,11 @@ using System;
 using DairyApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DairyApp.Migrations
+namespace DiaryApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -16,30 +15,25 @@ namespace DairyApp.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
 
             modelBuilder.Entity("DairyApp.Models.DiaryEntry", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -50,21 +44,21 @@ namespace DairyApp.Migrations
                         {
                             Id = 1,
                             Content = "Went hiking with Joe!",
-                            Created = new DateTime(2025, 3, 25, 18, 11, 40, 353, DateTimeKind.Local).AddTicks(9200),
+                            Created = new DateTime(2025, 6, 10, 21, 5, 1, 839, DateTimeKind.Local).AddTicks(564),
                             Title = "Went Hiking"
                         },
                         new
                         {
                             Id = 2,
                             Content = "Went shopping with Mike!",
-                            Created = new DateTime(2025, 3, 25, 18, 11, 40, 353, DateTimeKind.Local).AddTicks(9480),
+                            Created = new DateTime(2025, 6, 10, 21, 5, 1, 839, DateTimeKind.Local).AddTicks(829),
                             Title = "Went Shopping"
                         },
                         new
                         {
                             Id = 3,
                             Content = "Went diving with Kevin",
-                            Created = new DateTime(2025, 3, 25, 18, 11, 40, 353, DateTimeKind.Local).AddTicks(9483),
+                            Created = new DateTime(2025, 6, 10, 21, 5, 1, 839, DateTimeKind.Local).AddTicks(833),
                             Title = "Went Diving"
                         });
                 });
